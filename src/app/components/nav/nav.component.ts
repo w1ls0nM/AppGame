@@ -8,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+  openNav() {
+    const sideNav = document.getElementById('sideNav');
+    if (sideNav) {
+      sideNav.style.width = '250px';
+    }
+  }
 
+  closeNav() {
+    const sideNav = document.getElementById('sideNav');
+    if (sideNav) {
+      sideNav.style.width = '0'; 
+    }
+  }
 }

@@ -1,13 +1,29 @@
 header {
     background-color: #333;
     color: #fff;
-    padding: 1em;
+    padding: 0.5em 1em; 
   }
   
   .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  
+  .header-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; 
+  }
+  
+  h1 {
+    font-size: 2rem; 
+    color: #fff;
+    z-index: 10; 
+    position: relative;
+    margin: 0; 
   }
   
   .profile-section {
@@ -17,8 +33,8 @@ header {
   }
   
   .profile-icon {
-    width: 32px;
-    height: 32px;
+    width: 28px; 
+    height: 28px; 
     border-radius: 50%;
   }
   
@@ -26,7 +42,7 @@ header {
     background-color: #ff4b4b;
     color: #fff;
     border: none;
-    padding: 0.5em 1em;
+    padding: 0.3em 0.8em; 
     cursor: pointer;
     border-radius: 4px;
   }
@@ -34,10 +50,10 @@ header {
   .logout-button:hover {
     background-color: #ff1f1f;
   }
-
+  
   .userName {
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.9rem; 
     font-weight: bold;
     margin-right: 0.5em;
   }
