@@ -1,9 +1,7 @@
 body {
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
   background-color: #202225;
-  color: #e3e6ea; 
-  margin: 0;
-  padding: 0;
+  color: #e3e6ea;
 }
 
 .hero {
@@ -16,36 +14,46 @@ body {
   color: #e3e6ea; 
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4); 
-}
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 2rem;
-}
-
-.hero-content h1 {
+.animated-text {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  color: #e3e6ea; 
+  color: #e3e6ea;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-.hero-content p {
+.animated-subtitle {
   font-size: 1.25rem;
-  color: #a1b3cd; 
+  color: #a1b3cd;
+  animation: fadeInOut 3s ease-in-out infinite;
+  margin-top: 0.5rem;
 }
+
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #5865f2, 0 0 10px #5865f2, 0 0 20px #5865f2;
+  }
+  100% {
+    text-shadow: 0 0 10px #a1b3cd, 0 0 20px #a1b3cd, 0 0 30px #5865f2;
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .btn-primary:hover {
   background-color: #4b5bbd; 
+  transition: background-color 0.3s ease;
 }
 
 .featured-games {
@@ -54,7 +62,7 @@ body {
 }
 
 .carousel-item img {
-  height: 400px;
+  height: 350px;
   object-fit: cover;
   filter: brightness(85%);
 }
