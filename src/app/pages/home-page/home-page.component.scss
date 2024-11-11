@@ -1,0 +1,102 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  background-color: #202225;
+  color: #e3e6ea; 
+  margin: 0;
+  padding: 0;
+}
+
+.hero {
+  background-size: cover;
+  background-position: center;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #e3e6ea; 
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4); 
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #e3e6ea; 
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: #a1b3cd; 
+}
+
+.btn-primary:hover {
+  background-color: #4b5bbd; 
+}
+
+.featured-games {
+  background-color: #292b2f;
+  padding: 0.2rem 0;
+}
+
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+  filter: brightness(85%);
+}
+
+.game-info {
+  background-color: rgba(44, 47, 51, 0.85);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.community-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #5865f2;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #e3e6ea;
+  margin-bottom: 1rem;
+  position: relative;
+  
+  padding-bottom: 0.25rem;
+ 
+  align-items: center;
+}
+
+
+
+#community .row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: nowrap; 
+}
+
+#community h3 {
+  color: #e3e6ea; 
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+#community p {
+  color: #a1b3cd; 
+  font-size: 1rem;
+}

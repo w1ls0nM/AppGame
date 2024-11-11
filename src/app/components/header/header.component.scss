@@ -1,61 +1,67 @@
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 0.5em 1em; 
-  }
-  
-  .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .header-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1; 
-  }
-  
-  h1 {
-    font-size: 2rem; 
-    color: #fff;
-    z-index: 10; 
-    position: relative;
-    margin: 0; 
-  }
-  
-  .profile-section {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-  }
-  
-  .profile-icon {
-    width: 28px; 
-    height: 28px; 
-    border-radius: 50%;
-  }
-  
-  .logout-button {
-    background-color: #ff4b4b;
-    color: #fff;
-    border: none;
-    padding: 0.3em 0.8em; 
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .logout-button:hover {
-    background-color: #ff1f1f;
-  }
-  
-  .userName {
-    color: #fff;
-    font-size: 0.9rem; 
-    font-weight: bold;
-    margin-right: 0.5em;
-    
-  }
-  
+  background-color: #333;
+  color: #fff;
+  padding: 0.5em 1em;
+  width: 100%;
+  position: fixed; /* Fixes the header to the top */
+  top: 0; /* Aligns the header to the top of the viewport */
+  z-index: 1000; /* Ensures the header stays above other content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Adds a shadow for visual separation */
+}
+
+main {
+  padding-top: 70px; /* Adjust this value based on the height of your header */
+}
+
+/* Existing header styles */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #fff;
+  z-index: 10;
+  margin: 0;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.profile-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.logout-button {
+  background-color: #ff4b4b;
+  color: #fff;
+  border: none;
+  padding: 0.3em 0.8em;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.logout-button:hover {
+  background-color: #ff1f1f;
+}
+
+.userName {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-right: 0.5em;
+}
