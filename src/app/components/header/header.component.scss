@@ -1,0 +1,44 @@
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+  
+  .profile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  
+  .logout-button {
+    background-color: #ff4b4b;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff1f1f;
+  }
+
+  .userName {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 0.5em;
+  }
+  
