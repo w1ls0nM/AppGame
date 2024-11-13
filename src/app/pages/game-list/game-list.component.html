@@ -1,0 +1,9 @@
+<body>
+    <div class="lista">
+        @for (game of games; track game.id) {
+            <div>
+                <h2>(#{{game.id}}){{game.title}}</h2>
+            </div>
+        }
+    </div>
+</body>
