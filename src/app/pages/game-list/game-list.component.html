@@ -1,19 +1,21 @@
 <body>
     <div class="lista">
-        <div class="card-group">
-            @for (game of games; track game.id) {
-            <div>
-                <div class="card" style="width: 18rem;">
+        <form>
+            <input type="text" placeholder="Search games..." (input)="filterResults(filter.value)" class="form-control mb-3" #filter>
+        </form>
+        <div class="card-deck row row-cols-1 row-cols-md-6 mx-1">
+            <div class="col my-1" *ngFor="let game of filteredGames">
+                <div class="card border-secondary h-100">
                     <img class="card-img-top" [src]=game.thumbnail alt="cover">
                     <div class="card-body">
                         <h5 class="card-title">{{game.title}}</h5>
                         <p class="card-text">{{game.shortDescription}}.</p>
+                    </div>
+                    <div class="card-footer">
                         <a href="#" class="btn btn-primary">Ver detalhes</a>
                     </div>
                 </div>
             </div>
-        }
         </div>
     </div>
 </body>
-

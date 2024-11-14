@@ -10,19 +10,31 @@ import { CommonModule } from '@angular/common';
   styleUrl: './game-list.component.scss'
 })
 export class GameListComponent {
-  games: Array<any> = []
+  games: Array<any> = [];
+  searchQuery: any;
+  filteredGames: Array<any> = [];
 
-  constructor(private apiService: ApiService){}
+  constructor(private apiService: ApiService){  }
 
-   ngOnInit(){
-     this.apiService.getGamesList().subscribe({
-       next:(data) => {
-       console.log(data);
-       this.games = data;
-     },
-     error: (error) => {
-       console.error('Algo correu mal:', error);
-     }
-     })
-   }
+  ngOnInit(){
+    this.apiService.getGamesList().subscribe({
+      next:(data) => {
+      console.log(data);
+      this.games = data;
+      this.filteredGames = data;
+    },
+    error: (error) => {
+      console.error('Algo correu mal:', error);
+    }
+    })
+  }
+  filterResults(text: string){
+    if (!text) {
+      this.filteredGames = this.games;
+      return;
+    }
+    this.filteredGames = this.games.filter((game) =>
+      game?.title.toLowerCase().includes(text.toLowerCase()),
+    );
+  }
 }
