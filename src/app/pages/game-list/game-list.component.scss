@@ -1,0 +1,42 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    background-color: #202225;
+    color: #e3e6ea;
+  }
+
+  .hero {
+    background-size: cover;
+    background-position: center;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #e3e6ea; 
+    min-height: 40vh;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  .form-control {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .truncate-multiline {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
