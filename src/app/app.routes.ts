@@ -4,13 +4,14 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { MyListsComponent } from './pages/my-lists/my-lists.component';
+import { GameDetailsComponent } from './pages/game-details/game-details.component';
 
 export const routes: Routes = [
     {path:'gameList', component: GameListComponent},
     {path:'home-page', component:HomePageComponent},
     {path: 'profile', component: ProfileComponent},
     {path: 'my-lists', component: MyListsComponent},    
-    
+    {path: 'gameDetails/:id', component: GameDetailsComponent},
     
     
     

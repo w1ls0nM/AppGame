@@ -17,4 +17,8 @@ export class ApiService {
   getGamesList(): Observable<any>{
     return this.http.get('http://localhost:3000/gamesList',)
   }
+
+  getDetailsID(id: string): Observable<any>{
+    return this.http.get('http://localhost:3000/gameDetails/' + id);
+  }
 }

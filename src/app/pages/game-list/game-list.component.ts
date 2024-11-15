@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { CommonModule } from '@angular/common';
+import { Game } from '../../Models/game';
 
 @Component({
   selector: 'app-game-list',
@@ -10,11 +11,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './game-list.component.scss'
 })
 export class GameListComponent {
-  games: Array<any> = [];
+  games: Array<Game> = [];
   searchQuery: any;
   filteredGames: Array<any> = [];
 
-  constructor(private apiService: ApiService){  }
+  constructor(
+    private apiService: ApiService,
+  ){}
 
   ngOnInit(){
     this.apiService.getGamesList().subscribe({

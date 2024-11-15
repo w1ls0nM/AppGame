@@ -1,0 +1,60 @@
+<body>
+    <section class="hero">
+        <div class="container hero-content text-center">
+            <h1 class="display-4 mb-4 animated-text">{{gameDetails.title}}</h1>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid row">
+            <div class="col-4">
+                <img src="{{gameDetails.thumbnail}}">
+            </div>
+            <div class="col-4">
+                <h4>Info</h4>
+                <p>Developer: {{gameDetails.developer}}</p>
+                <p>Genre: {{gameDetails.genre}}</p>
+                <p>Platform: {{gameDetails.platform}}</p>
+                <p>Release date: {{gameDetails.releaseDate}}</p>
+                <p>Game Status: {{gameDetails.status}}</p>
+            </div>
+            <div class="col-4">
+                <h4>System Requirements</h4>
+                <div >
+                    <p>OS: {{gameDetails.minimumSystemRequirements.os}}</p>
+                    <p>Processor: {{gameDetails.minimumSystemRequirements.processor}}</p>
+                    <p>Memory: {{gameDetails.minimumSystemRequirements.memory}}</p>
+                    <p>Graphics: {{gameDetails.minimumSystemRequirements.graphics}}</p>
+                    <p>Storage: {{gameDetails.minimumSystemRequirements.storage}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div>
+            <p>
+                {{gameDetails.description}}
+            </p>
+        </div>
+    </section>
+    <section id="featured-games" class="featured-games">
+        <div class="container">
+            <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @for(image of roulette; track image){
+                        <div class="carousel-item active">
+                            <img src={{image.image}} class="d-block w-100">
+                        </div>
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+</body>
