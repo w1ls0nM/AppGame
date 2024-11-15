@@ -39,9 +39,11 @@
     <section id="featured-games" class="featured-games">
         <div class="container">
             <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" *ngFor="let image of roulette">
-                        <img src={{image.image}} class="d-block w-100">
+                <div *ngIf="roulette && roulette.length > 0; else noScreenshots">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" *ngFor="let image of roulette">
+                            <img src={{image.image}} class="d-block w-100">
+                        </div>
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
@@ -56,3 +58,10 @@
         </div>
     </section>
 </body>
+
+<ng-template #noScreenshots>
+    <div class="no-screenshots-message carousel-inner">
+        <img src="https://static.wikia.nocookie.net/neocosmostudios/images/3/35/No-image-available.jpeg/revision/latest/scale-to-width-down/527?cb=20220424005347" 
+        alt="No screenshots available">
+    </div>
+</ng-template>

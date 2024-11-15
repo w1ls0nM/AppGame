@@ -48,3 +48,10 @@ body {
     object-fit: cover;
     filter: brightness(85%);
 }
+
+.no-screenshots-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
