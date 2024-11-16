@@ -10,4 +10,5 @@ export interface Game {
     developer: string;
     releaseDate: string;
     freetogameProfileUrl: string;
+    category?: string;
 }

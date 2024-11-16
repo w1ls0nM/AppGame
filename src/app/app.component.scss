@@ -2,15 +2,15 @@
 main {
   flex-grow: 1; 
   padding: 20px;
+  background-color:#292b2f;
 }
 
 
 
 
 app-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }

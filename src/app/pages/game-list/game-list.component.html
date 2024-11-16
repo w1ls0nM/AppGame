@@ -1,0 +1,30 @@
+<body>
+    <section id="home" class="hero">
+        <div class="container hero-content text-center">
+            <h1 class="display-4 mb-4 animated-text">Game List</h1>
+        </div>
+        <div class="container hero-content text-center">
+            <form>
+                <input type="text" placeholder="Search games..." (input)="filterResults(filter.value)" class="form-control" #filter>
+            </form>
+        </div>
+    </section>
+    <section>
+        <div class="lista">
+            <div class="card-deck row row-cols-1 row-cols-md-6 mx-1">
+                <div class="col my-1" *ngFor="let game of filteredGames">
+                    <div class="card border-secondary h-100 border-secondary bg-transparent text-white">
+                        <img class="card-img-top" [src]=game.thumbnail alt="cover">
+                        <div class="card-body">
+                            <h5 class="card-title">{{game.title}}</h5>
+                            <p class="card-text truncate-multiline">{{game.shortDescription}}.</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="gameDetails/{{game.id}}" class="btn btn-primary mx-auto">Ver detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
