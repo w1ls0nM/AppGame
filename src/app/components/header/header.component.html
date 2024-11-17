@@ -6,8 +6,12 @@
     </div>
 
     <div class="profile-section">
-      <label class="userName">{{ profile?.name || 'Guest' }}</label>
+      <a href="/profile">
+        <label class="userName">
+        {{ profile?.name || 'Guest' }}
+      </label>
       <img [src]="profile?.avatar" alt="Profile Icon" class="profile-icon">
+      </a>
       <button class="logout-button">Logout</button>
     </div>
   </div>
