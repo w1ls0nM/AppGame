@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../../Models/game';
 import { CommonModule } from '@angular/common';
@@ -7,12 +7,13 @@ import { ApiService } from '../../api.service';
 import { List } from '../../Models/list';
 import { Profile } from '../../Models/profile'; 
 import { NotificationService } from '../../notification.service';
+import { Route } from '@angular/router';
 
 
 @Component({
   selector: 'app-my-list-details',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './my-list-details.component.html',
   styleUrls: ['./my-list-details.component.scss']
 })
@@ -24,7 +25,7 @@ export class MyListDetailsComponent implements OnInit {
   showMoveOptions: { [gameId: string]: boolean } = {}; 
   currentListName: string = '';
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService,private notificationService: NotificationService) {}
+  constructor(private router: Router, private route: ActivatedRoute, private apiService: ApiService,private notificationService: NotificationService) {}
 
   ngOnInit(): void {
   
@@ -67,7 +68,13 @@ export class MyListDetailsComponent implements OnInit {
         
       
         this.apiService.updateProfile(profile).subscribe(() => {
-          this.loadListDetails(); 
+          if (selectedList.gamesIds.length === 0) {
+           
+            this.router.navigate(['my-lists']);
+          } else {
+            
+            this.loadListDetails();
+          }
         });
       }
     });
@@ -75,23 +82,33 @@ export class MyListDetailsComponent implements OnInit {
   }
 
 
- moveGameToList(gameId: string, targetListId: string): void {
-  this.apiService.getProfile().subscribe(profile => {
-    const selectedList = profile.lists.find((list: any) => list.id === this.listId);
-    const targetList = profile.lists.find((list: any) => list.id === targetListId);
-
-    if (selectedList && targetList) {
-      selectedList.gamesIds = selectedList.gamesIds.filter((id: string) => id !== gameId); 
-      targetList.gamesIds.push(gameId); 
-
+  moveGameToList(gameId: string, targetListId: string): void {
+    this.apiService.getProfile().subscribe(profile => {
+      const selectedList = profile.lists.find((list: any) => list.id === this.listId);
+      const targetList = profile.lists.find((list: any) => list.id === targetListId);
   
-      this.apiService.updateProfile(profile).subscribe(() => {
-        this.loadListDetails(); 
-      });
-    }
-  });
-  this.notificationService.showSuccess('Game moved successfully!');
-}
+      if (selectedList && targetList) {
+        
+        selectedList.gamesIds = selectedList.gamesIds.filter((id: string) => id !== gameId); 
+       
+        targetList.gamesIds.push(gameId); 
+  
+        
+        this.apiService.updateProfile(profile).subscribe(() => {
+          if (selectedList.gamesIds.length === 0) {
+           
+            this.router.navigate(['my-lists']);
+          } else {
+            
+            this.loadListDetails();
+          }
+         
+          this.notificationService.showSuccess('Game moved successfully!');
+        });
+      }
+    });
+  }
+  
 
 toggleMoveOptions(gameId: string): void {
   this.showMoveOptions[gameId] = !this.showMoveOptions[gameId];
