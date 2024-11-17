@@ -81,19 +81,15 @@ export class GameDetailsComponent {
       }
     }
 
-  toggleDropdown(dropdownType: string): void {
-    if (dropdownType === 'add') {
-      this.dropdownVisibilityAdd = !this.dropdownVisibilityAdd;
-      this.dropdownVisibilityMove = false;
-    } else if (dropdownType === 'move') {
-      this.dropdownVisibilityMove = !this.dropdownVisibilityMove;
-      this.dropdownVisibilityAdd = false;
+    toggleDropdown(dropdownType: string): void {
+      if (dropdownType === 'add') {
+        this.dropdownVisibilityAdd = !this.dropdownVisibilityAdd;
+        this.dropdownVisibilityMove = false; 
+      } else if (dropdownType === 'move') {
+        this.dropdownVisibilityMove = !this.dropdownVisibilityMove;
+        this.dropdownVisibilityAdd = false; 
+      }
     }
-  }
-
-  toggleMoveOptions(): void {
-    this.showMoveOptions[this.gameDetails.id] = !this.showMoveOptions[this.gameDetails.id];
-  }
 
   addToMyList(listId: string): void {
     if (this.gameDetails) {
@@ -116,6 +112,7 @@ export class GameDetailsComponent {
           this.notificationService.showSuccess('Game added successfully');
           this.dropdownVisibilityAdd = false;
           this.errorMessage = '';
+          window.location.reload();
         });
       });
     }

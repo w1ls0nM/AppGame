@@ -1,6 +1,7 @@
 <body>
     <section class="hero">
-        <button onclick="window.history.back()" class="btn btn-primary back-button">Back</button>
+        <br>
+        <button onclick="window.history.back()" class="btn btn-primary back-button mt-5">Back</button>
         <div class="container hero-content text-center">
             <h1 class="display-4 mb-4 animated-text">{{gameDetails.title}}</h1>
         </div>
@@ -35,31 +36,33 @@
         </div>
         <div class="row">
             <div class="dropdown-container col">
-                <button type="button" class="btn btn-primary" (click)="toggleDropdown('add')">
-                Add to list
+                <button type="button" 
+                        class="btn btn-primary" 
+                        [disabled]="currentList" 
+                        (click)="toggleDropdown('add')">
+                    Add to list
                 </button>
-                <div *ngIf="dropdownVisibilityAdd" class="dropdown-menu">
-                    <div *ngFor="let list of lists">
-                        <button
-                        type="button"
-                        class="dropdown-item"
-                        (click)="addToMyList(list.id); toggleDropdown('add')">
-                        {{ list.name }}
+                <div *ngIf="dropdownVisibilityAdd" class="mt-2">
+                    <ul class="list-group">
+                      <li *ngFor="let list of getAvailableLists()" class="list-group-item">
+                        <button class="btn btn-link" (click)="addToMyList(list.id)">
+                            {{ list.name }}
                         </button>
-                    </div>
+                      </li>
+                    </ul>
                 </div>
             </div>
             <div class="dropdown-container col">
-                <button type="button" class="btn btn-primary" (click)="toggleMoveOptions()">
-                Move to list
+                <button type="button" class="btn btn-primary" (click)="toggleDropdown('move')">
+                    Move to list
                 </button>
-                <div *ngIf="showMoveOptions[gameDetails.id]" class="mt-2">
+                <div *ngIf="dropdownVisibilityMove" class="mt-2">
                     <ul class="list-group">
-                      <li *ngFor="let list of getAvailableLists()" class="list-group-item">
+                        <li *ngFor="let list of getAvailableLists()" class="list-group-item">
                         <button class="btn btn-link" (click)="moveGameToList(list.id)">{{ list.name }}</button>
-                      </li>
+                        </li>
                     </ul>
-                  </div>
+                </div>
             </div>
             <div class="col">
                 <button type="button" class="btn btn-primary" (click)="removeGameFromList()">Remove from list</button>
