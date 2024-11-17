@@ -9,7 +9,14 @@
             <div class="card-body">
               <h5 class="card-title">{{ category }}</h5>
               <p class="card-text">{{ categorizedGames[category].length }} games in this list</p>
-              <a href="#" class="btn btn-primary" (click)="showListDetails(category)">See More</a>
+              <a 
+              class="btn btn-primary" 
+              (click)="showListDetails(category)"
+              [class.disabled]="categorizedGames[category].length === 0"
+              [attr.disabled]="categorizedGames[category].length === 0 ? true : null"
+              >
+                See More
+              </a>
             </div>
           </div>
         </div>

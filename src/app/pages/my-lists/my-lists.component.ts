@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { Game } from '../../Models/game';
 import { CommonModule } from '@angular/common';
+import { RedirectCommand } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-lists',
@@ -26,7 +28,8 @@ categorizedGames: { [category: string]: Game[] } = {
 
 
   randomGames: Game[] = [];
-  constructor(private apiService: ApiService) {}
+  constructor(private router: Router, private apiService: ApiService) {}
+
 
   ngOnInit(): void {
 
@@ -104,7 +107,7 @@ categorizedGames: { [category: string]: Game[] } = {
   
   showListDetails(category: string) {
     console.log('Show details for:', category);
-   
+    this.router.navigate(['/my-list-details'], { queryParams: { category } });
   }
 
   clearLocalStorage() {
