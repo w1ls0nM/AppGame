@@ -51,6 +51,9 @@ export class ProfileComponent {
           console.log('Profile updated successfully');
           console.log('Data: ' + data);
           this.notificationService.showSuccess('Profile updated successfully!');
+          setTimeout(() => {
+            window.location.reload(); 
+          }, 2000);  
         },
         error: error => {
           console.error('Error updating profile', error);
