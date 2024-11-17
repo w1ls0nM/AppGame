@@ -3,6 +3,7 @@ import { ApiService } from '../../api.service';
 import { Game } from '../../Models/game';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../notification.service';
 
 @Component({
   selector: 'app-my-lists',
@@ -19,7 +20,8 @@ export class MyListsComponent implements OnInit {
   listIdToAddTo: string | null = null;
   errorMessage: string = '';
 
-  constructor(private router: Router, private apiService: ApiService) {}
+
+  constructor(private router: Router, private apiService: ApiService,private notificationService: NotificationService) {}
 
   ngOnInit(): void {
     this.apiService.getProfile().subscribe(profile => {
@@ -72,7 +74,7 @@ export class MyListsComponent implements OnInit {
       const gameAlreadyInList = this.lists.some(list => list.gamesIds.includes(this.selectedGame!.id));
   
       if (gameAlreadyInList) {
-        this.errorMessage = `This game is already in another list. A game can only appear in one list.`;
+        this.notificationService.showError( 'This game is already in another list. A game can only appear in one list.');
         return;
       }
   
@@ -85,7 +87,7 @@ export class MyListsComponent implements OnInit {
 
         
         this.apiService.updateProfile(profile).subscribe(response => {
-          console.log('Game added successfully:', response);
+          this.notificationService.showSuccess('Game added successfully');
           this.dropdownVisible = false;
           this.selectedGame = null;
           this.errorMessage = '';
@@ -93,7 +95,7 @@ export class MyListsComponent implements OnInit {
       });
     }
   } else {
-    console.error('No game selected');
+    this.notificationService.showError('No game selected');
   }
   }
 }
