@@ -1,14 +1,35 @@
 <div *ngIf="games.length > 0; else noGames">
-  <h2>Games in List</h2>
-  <ul>
-    <li *ngFor="let game of games">
-      <img [src]="game.thumbnail" alt="{{ game.title }}" />
-      <strong>{{ game.title }}</strong>
-      <p>{{ game.shortDescription }}</p>
-      <a [href]="game.gameUrl" target="_blank">View More</a>
-    </li>
-  </ul>
+  <h2 class="text-center mb-4">Games in List</h2>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let game of games">
+      <div class="card h-100">
+        <img [src]="game.thumbnail" class="card-img-top" alt="{{ game.title }}" />
+        <div class="card-body">
+          <h5 class="card-title">{{ game.title }}</h5>
+          <p class="card-text">{{ game.shortDescription }}</p>
+          
+
+          
+          <button class="btn btn-danger mt-2" (click)="removeGameFromList(game.id)">Remove</button>
+
+          
+          <button class="btn btn-warning mt-2" type="button" (click)="toggleMoveOptions(game.id)">
+            Move
+          </button>
+
+          <div *ngIf="showMoveOptions[game.id]" class="mt-2">
+            <ul class="list-group">
+              <li *ngFor="let list of getAvailableLists(game.id)" class="list-group-item">
+                <button class="btn btn-link" (click)="moveGameToList(game.id, list.id)">{{ list.name }}</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 <ng-template #noGames>
-  <p>No games found for this list.</p>
+  <p class="text-center">No games found for this list.</p>
 </ng-template>

@@ -1,42 +1,213 @@
-/* my-list.component.css */
+/* Styling for my-lists section */
 .card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  transition: background-color 0.3s ease;
+}
+
+
+button:focus {
+  box-shadow: none;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+.carousel-item img {
+  height: 350px;
+  object-fit: cover;
+  filter: brightness(85%);
+}
+
+.game-info {
+  background-color: rgba(44, 47, 51, 0.85);
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.carousel-caption h6 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.carousel-caption p {
+  color: #fff;
+}
+
+.animated-text {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #e3e6ea;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animated-subtitle {
+  font-size: 1.25rem;
+  color: #a1b3cd;
+  animation: fadeInOut 3s ease-in-out infinite;
+  margin-top: 0.5rem;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .card:hover {
-    transform: translateY(-5px); /* Slight lift effect */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+  50% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .card-body {
-    padding: 1.5rem; /* Increased padding for more space */
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #5865f2, 0 0 10px #5865f2, 0 0 20px #5865f2;
   }
-  
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #333;
+  100% {
+    text-shadow: 0 0 10px #a1b3cd, 0 0 20px #a1b3cd, 0 0 30px #5865f2;
   }
-  
-  .card-text {
-    font-size: 1rem;
-  }
-  
-  button {
-    font-size: 1rem;
-    padding: 0.75rem 1.25rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #007bff; /* Darker blue on hover */
-  }
-  
-  button:focus {
-    box-shadow: none; /* Remove default focus border */
-  }
-  
-  .container {
-    max-width: 1200px; /* Limit the container width */
-  }
-  
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #292b2f;
+}
+
+.card-img-top {
+  border-radius: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #5865f2;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#my-lists .row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  overflow-x: auto;
+}
+
+#my-lists .col-md-2 {
+  flex: 0 0 16rem;
+}
+
+#my-lists .card {
+  margin-bottom: 1rem;
+  background-color: #292b2f;
+}
+
+.card-img-top {
+  border-radius: 10px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  color: #f1f1f1;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #5865f2;
+  color: #fff;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.small-shortDescription {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: block;
+}
+
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  bottom: 0rem;
+  right: 6rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  padding: 5px 0;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.dropdown-item {
+  background-color: #fff;
+  color: #333;
+  padding: 10px 15px;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #adbcf0;
+}

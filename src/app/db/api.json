@@ -1,33 +1,33 @@
 {
   "profile": {
-    "id": "06c2",
-    "name": "Zé Povinho",
-    "email": "zpovinho@mail.pt",
-    "password": "123456",
-    "avatar": "https://avatars.steamstatic.com/b32358b1a0f188ff07656a0c265b5af916224e96_full.jpg",
     "lists": [
       {
         "id": "emif",
         "name": "Play Later",
         "gamesIds": [
           "12",
+          "521",
+          "517",
+          "380",
           "340",
-          "523"
+          "11",
+          "516",
+          "5"
         ]
       },
       {
         "id": "qepb",
         "name": "Currently Playing",
         "gamesIds": [
-          "582",
-          "11"
+          "540"
         ]
       },
       {
         "id": "9ou3",
         "name": "Played",
         "gamesIds": [
-          "511"
+          "511",
+          "523"
         ]
       },
       {

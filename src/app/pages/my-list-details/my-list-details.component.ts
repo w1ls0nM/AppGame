@@ -18,11 +18,13 @@ export class MyListDetailsComponent implements OnInit {
 
   listId!: string;
   games: any[] = [];
+  lists: any[] = []; 
+  showMoveOptions: { [gameId: string]: boolean } = {}; 
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   ngOnInit(): void {
-    // Fetch the query parameter for listId
+  
     this.route.queryParams.subscribe(params => {
       this.listId = params['listId'];
       if (this.listId) {
@@ -35,6 +37,7 @@ export class MyListDetailsComponent implements OnInit {
     
     this.apiService.getProfile().subscribe(profile => {
       const selectedList = profile.lists.find((list: any) => list.id === this.listId);
+      this.lists = profile.lists;
 
       if (selectedList) {
         
@@ -44,4 +47,47 @@ export class MyListDetailsComponent implements OnInit {
       }
     });
   }
+
+  getAvailableLists(gameId: string): List[] {
+    return this.lists.filter(list => list.gamesIds.indexOf(gameId) === -1 && list.id !== this.listId); // Exclude current list
+  }
+
+
+   removeGameFromList(gameId: string): void {
+    this.apiService.getProfile().subscribe(profile => {
+      const selectedList = profile.lists.find((list: any) => list.id === this.listId);
+      
+      if (selectedList) {
+        selectedList.gamesIds = selectedList.gamesIds.filter((id: string) => id !== gameId); // Remove the game by its ID
+        
+      
+        this.apiService.updateProfile({ lists: profile.lists }).subscribe(() => {
+          this.loadListDetails();
+        });
+      }
+    });
+  }
+
+
+ moveGameToList(gameId: string, targetListId: string): void {
+  this.apiService.getProfile().subscribe(profile => {
+    const selectedList = profile.lists.find((list: any) => list.id === this.listId);
+    const targetList = profile.lists.find((list: any) => list.id === targetListId);
+
+    if (selectedList && targetList) {
+      selectedList.gamesIds = selectedList.gamesIds.filter((id: string) => id !== gameId); 
+      targetList.gamesIds.push(gameId); 
+
+  
+      this.apiService.updateProfile({ lists: profile.lists }).subscribe(() => {
+        this.loadListDetails(); 
+      });
+    }
+  });
+}
+
+toggleMoveOptions(gameId: string): void {
+  this.showMoveOptions[gameId] = !this.showMoveOptions[gameId];
+}
+
 }
