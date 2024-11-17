@@ -14,6 +14,11 @@ export class GameListComponent {
   games: Array<Game> = [];
   searchQuery: any;
   filteredGames: Array<any> = [];
+  
+
+  categories = ['Play Later', 'Currently Playing', 'Played', 'Completed'];
+
+  dropdownVisibility: { [key: string]: boolean } = {};
 
   constructor(
     private apiService: ApiService,
@@ -39,5 +44,13 @@ export class GameListComponent {
     this.filteredGames = this.games.filter((game) =>
       game?.title.toLowerCase().includes(text.toLowerCase()),
     );
+  }
+
+  toggleDropdown(gameId: string): void {
+    this.dropdownVisibility[gameId] = !this.dropdownVisibility[gameId];
+  }
+
+  addToMyList(game: Game, category: string): void {
+    console.log("add to list: "+category);
   }
 }
