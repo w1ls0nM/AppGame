@@ -1,0 +1,75 @@
+.update-profile {
+    background-color: #292b2f;
+    padding: 2rem 0;
+    color: #e3e6ea;
+}
+
+.update-profile .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.update-profile .section-title {
+    font-size: 2.5rem;
+    color: #e3e6ea;
+    margin-bottom: 2rem;
+}
+
+.form-container {
+    background-color: rgba(44, 47, 51, 0.85);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    font-size: 1.1rem;
+    color: #e3e6ea;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #202225;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.form-control::placeholder {
+    color: #a1b3cd;
+}
+
+.btn-primary {
+    background-color: #5865f2;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4752c4;
+}
+
+.hero {
+    background-size: cover;
+    background-position: center;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #e3e6ea; 
+    min-height: 40vh;
+    flex-direction: column;
+    justify-content: center;
+}
