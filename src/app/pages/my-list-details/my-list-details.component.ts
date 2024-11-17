@@ -20,6 +20,7 @@ export class MyListDetailsComponent implements OnInit {
   games: any[] = [];
   lists: any[] = []; 
   showMoveOptions: { [gameId: string]: boolean } = {}; 
+  currentListName: string = '';
 
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
@@ -33,6 +34,8 @@ export class MyListDetailsComponent implements OnInit {
     });
   }
 
+  
+
   loadListDetails(): void {
     
     this.apiService.getProfile().subscribe(profile => {
@@ -40,7 +43,7 @@ export class MyListDetailsComponent implements OnInit {
       this.lists = profile.lists;
 
       if (selectedList) {
-        
+        this.currentListName = selectedList.name;
         this.apiService.getGamesByIds(selectedList.gamesIds).subscribe(games => {
           this.games = games;
         });

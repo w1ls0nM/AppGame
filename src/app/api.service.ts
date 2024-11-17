@@ -7,6 +7,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
+  getListById(listId: string) {
+    throw new Error('Method not implemented.');
+  }
 
   private list: Array<Game> = [];
 
