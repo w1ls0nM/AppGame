@@ -29,25 +29,40 @@
                 </div>
             </div>
         </div>
-        <div class="row"><div class="dropdown-container col">
-            <button type="button" class="btn btn-primary" (click)="toggleDropdown()">
-              Add to list
-            </button>
-            <div *ngIf="dropdownVisibility" class="dropdown-menu">
-              <div *ngFor="let category of categories">
-                <button
-                  type="button"
-                  class="dropdown-item"
-                  (click)="addToMyList(category); toggleDropdown()">
-                  {{ category }}
+        <div class="row">
+            <div class="dropdown-container col">
+                <button type="button" class="btn btn-primary" (click)="toggleDropdown('add')">
+                Add to list
                 </button>
-              </div>
+                <div *ngIf="dropdownVisibilityAdd" class="dropdown-menu">
+                    <div *ngFor="let category of categories">
+                        <button
+                        type="button"
+                        class="dropdown-item"
+                        (click)="addToMyList(category); toggleDropdown('add')">
+                        {{ category }}
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div class="dropdown-container col">
+                <button type="button" class="btn btn-primary" (click)="toggleDropdown('move')">
+                Move to list
+                </button>
+                <div *ngIf="dropdownVisibilityMove" class="dropdown-menu">
+                    <div *ngFor="let category of categories">
+                        <button
+                        type="button"
+                        class="dropdown-item"
+                        (click)="moveGameToList(category); toggleDropdown('move')">
+                        {{ category }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary" (click)="removeGameFromList()">Remove from list</button>
+            </div>
         </div>
     </section>
     <section>
