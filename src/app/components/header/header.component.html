@@ -8,9 +8,17 @@
     <div class="profile-section">
       <label class="userName">{{ profile?.name || 'Guest' }}</label>
       <button (click)="navigateToUpdateProfile()" class="profile-icon-button">
-        <img [src]="profile?.avatar || defaultAvatar" alt="Profile Icon" class="profile-icon">
+        <img 
+          *ngIf="profile?.avatar; else initialsTemplate" 
+          [src]="profile?.avatar ?? defaultAvatar" 
+          alt="Profile Icon" 
+          class="profile-icon">
+        <ng-template #initialsTemplate>
+          <div class="avatar-initials">{{ getInitials(profile?.name || 'Guest') }}</div>
+        </ng-template>
       </button>
       <button class="logout-button">Logout</button>
     </div>
+    
   </div>
 </header>

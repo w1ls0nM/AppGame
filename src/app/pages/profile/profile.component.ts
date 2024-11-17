@@ -18,7 +18,7 @@ export class ProfileComponent {
     name: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
-    avatar: new FormControl('', Validators.required),
+    avatar: new FormControl(''),
   });
 
   constructor(private profileService: ProfileServiceService, private notificationService: NotificationService) {}
