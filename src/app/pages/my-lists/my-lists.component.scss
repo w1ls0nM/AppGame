@@ -39,7 +39,7 @@ button:focus {
 
 .carousel-item img {
   height: 350px;
-  object-fit: cover;
+  object-fit: fill;
   filter: brightness(85%);
 }
 
