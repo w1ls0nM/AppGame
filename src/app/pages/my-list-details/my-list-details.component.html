@@ -1,58 +1,14 @@
-<body>
-  <section id="home" class="hero">
-    <div class="container hero-content text-center">
-      <h1 class="display-4 mb-4 animated-text">{{ category }} - Game List</h1>
-    </div>
-    <div class="container hero-content text-center">
-      <form>
-        <input
-          type="text"
-          placeholder="Search games..."
-          (input)="filterResults(filter.value)"
-          class="form-control"
-          #filter
-        />
-      </form>
-    </div>
-  </section>
-  <section>
-    <div class="lista">
-      <div class="card-deck row row-cols-1 row-cols-md-6 mx-1">
-        <div class="col my-1" *ngFor="let game of filteredGames">
-          <div class="card border-secondary h-100 border-secondary bg-transparent text-white">
-            <img class="card-img-top" [src]="game.thumbnail" alt="cover" />
-            <div class="card-body">
-              <h5 class="card-title">{{ game.title }}</h5>
-            </div>
-            <div class="card-footer d-flex flex-column">
-              <button class="btn btn-danger btn-sm mb-2" (click)="removeGame(game)">Remove</button>
-              <button 
-                class="btn btn-secondary btn-sm mb-2" 
-                (click)="toggleCategorySelector(game)">
-                Move
-              </button>
-              <div *ngIf="dropdownVisible[game.id]">
-                <select
-                  class="form-control mb-2"
-                  [(ngModel)]="selectedCategory"
-                  [ngModelOptions]="{ standalone: true }"
-                >
-                  <option value="" disabled>Select category</option>
-                  <option *ngFor="let category of availableCategories" [value]="category">
-                    {{ category }}
-                  </option>
-                </select>
-                <button 
-                  class="btn btn-primary btn-sm" 
-                  (click)="moveGame(game)">
-                  Confirm Move
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-</body>
+<div *ngIf="games.length > 0; else noGames">
+  <h2>Games in List</h2>
+  <ul>
+    <li *ngFor="let game of games">
+      <img [src]="game.thumbnail" alt="{{ game.title }}" />
+      <strong>{{ game.title }}</strong>
+      <p>{{ game.shortDescription }}</p>
+      <a [href]="game.gameUrl" target="_blank">View More</a>
+    </li>
+  </ul>
+</div>
+<ng-template #noGames>
+  <p>No games found for this list.</p>
+</ng-template>
