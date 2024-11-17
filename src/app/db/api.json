@@ -9,16 +9,12 @@
       {
         "id": "emif",
         "name": "Play Later",
-        "gamesIds": [
-          "12"
-        ]
+        "gamesIds": []
       },
       {
         "id": "qepb",
         "name": "Currently Playing",
-        "gamesIds": [
-          "11"
-        ]
+        "gamesIds": []
       },
       {
         "id": "9ou3",
