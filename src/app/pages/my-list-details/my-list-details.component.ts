@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../api.service';
 import { List } from '../../Models/list';
 import { Profile } from '../../Models/profile'; 
+import { NotificationService } from '../../notification.service';
+
+
 @Component({
   selector: 'app-my-list-details',
   standalone: true,
@@ -21,7 +24,7 @@ export class MyListDetailsComponent implements OnInit {
   showMoveOptions: { [gameId: string]: boolean } = {}; 
   currentListName: string = '';
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
+  constructor(private route: ActivatedRoute, private apiService: ApiService,private notificationService: NotificationService) {}
 
   ngOnInit(): void {
   
@@ -68,6 +71,7 @@ export class MyListDetailsComponent implements OnInit {
         });
       }
     });
+    this.notificationService.showSuccess('Game removed from list successfully!');
   }
 
 
@@ -86,6 +90,7 @@ export class MyListDetailsComponent implements OnInit {
       });
     }
   });
+  this.notificationService.showSuccess('Game moved successfully!');
 }
 
 toggleMoveOptions(gameId: string): void {
