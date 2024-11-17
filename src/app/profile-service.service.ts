@@ -15,7 +15,7 @@ export class ProfileServiceService {
     return this.httpClient.get('http://localhost:3000/profile')
   }
 
-  updateAnimal(id: String|undefined, profile: Profile): Observable<any>{
+  updateProfile(id: String|undefined, profile: Profile): Observable<any>{
     return this.httpClient.put('http://localhost:3000/profile' + id, profile)
   }
 }
