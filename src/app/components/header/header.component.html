@@ -4,20 +4,11 @@
       <app-nav></app-nav>
       <h1>AppGame</h1>
     </div>
-      
-  
+
     <div class="profile-section">
-      <label class="userName">XgamesMAMA</label>
-      <img
-        src="https://img.freepik.com/vecteurs-libre/jeu-astronaute-mignon-joystick-casque-dessin-anime-icone-vectorielle-illustration-science-techno_138676-9648.jpg?semt=ais_hybrid"
-        alt="Profile Icon" class="profile-icon">
+      <label class="userName">{{ profile?.name || 'Guest' }}</label>
+      <img [src]="profile?.avatar" alt="Profile Icon" class="profile-icon">
       <button class="logout-button">Logout</button>
     </div>
   </div>
 </header>
-  
-
-  
-  
-  
-  
