@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GameDetails } from '../../Models/game-details';
 import { CommonModule } from '@angular/common';
+import { NotificationService } from '../../notification.service';
+import { List } from '../../Models/list';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-game-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './game-details.component.html',
   styleUrl: './game-details.component.scss'
 })
@@ -46,10 +49,16 @@ export class GameDetailsComponent {
 
   dropdownVisibilityAdd: boolean = false;
   dropdownVisibilityMove: boolean = false;
+  
+  lists: any[] = [];
+  errorMessage: string = '';
+  showMoveOptions: { [gameId: string]: boolean } = {};
 
   constructor(
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService,
+    private route: ActivatedRoute
   ){}
   
   ngOnInit(){
@@ -61,27 +70,96 @@ export class GameDetailsComponent {
         this.roulette = this.gameDetails.screenshots;
       },
     })
+
+    this.apiService.getProfile().subscribe(profile => {
+      this.lists = profile.lists;
+    });
   }
 
   toggleDropdown(dropdownType: string): void {
     if (dropdownType === 'add') {
       this.dropdownVisibilityAdd = !this.dropdownVisibilityAdd;
-      this.dropdownVisibilityMove = false; // Close the other dropdown
+      this.dropdownVisibilityMove = false;
     } else if (dropdownType === 'move') {
       this.dropdownVisibilityMove = !this.dropdownVisibilityMove;
-      this.dropdownVisibilityAdd = false; // Close the other dropdown
+      this.dropdownVisibilityAdd = false;
     }
   }
 
-  addToMyList(category: string): void {
-    console.log("add "+this.gameDetails.id+" to list: "+category);
+  toggleMoveOptions(): void {
+    this.showMoveOptions[this.gameDetails.id] = !this.showMoveOptions[this.gameDetails.id];
   }
 
-  moveGameToList(category: string): void{
-    console.log("move "+this.gameDetails.id+" to list: "+category);
+  addToMyList(listId: string): void {
+    if (this.gameDetails) {
+      const gameAlreadyInList = this.lists.some(list => list.gamesIds.includes(this.gameDetails!.id));
+  
+      if (gameAlreadyInList) {
+        this.notificationService.showError( 'This game is already in another list. A game can only appear in one list.');
+        return;
+      }
+  
+      const updatedList = this.lists.find(list => list.id === listId);
+      if (updatedList) {
+        updatedList.gamesIds.push(this.gameDetails.id);
+
+      this.apiService.getProfile().subscribe(profile => {
+        profile.lists = this.lists;  
+
+        
+        this.apiService.updateProfile(profile).subscribe(response => {
+          this.notificationService.showSuccess('Game added successfully');
+          this.dropdownVisibilityAdd = false;
+          this.errorMessage = '';
+        });
+      });
+    }
+  } else {
+    this.notificationService.showError('No game selected');
+  }
+  }
+
+  getAvailableLists(): List[] {
+    return this.lists.filter(list => list.gamesIds.indexOf(this.gameDetails.id) === -1 && list.id !== this.lists); 
+  }
+
+  moveGameToList(listId: string): void{
+
+      this.apiService.getProfile().subscribe(profile => {
+      const targetList = profile.lists.find((list: any) => list.id === listId);
+      const previousList = profile.lists.find((list: any) => list.gamesIds.includes(this.gameDetails.id));
+      
+      
+      if (targetList && previousList) {
+        previousList.gamesIds = previousList.gamesIds.filter((id: string) => id !== this.gameDetails.id); 
+        targetList.gamesIds.push(this.gameDetails.id); 
+    
+        this.apiService.updateProfile(profile).subscribe(() => {
+          this.notificationService.showSuccess('Game moved successfully!');
+          this.dropdownVisibilityMove = false;
+          this.showMoveOptions[this.gameDetails.id] = false;
+          window.location.reload();
+        });
+      }else{
+        this.notificationService.showError('Unable to move the game. Please try again.');
+      }
+    });
   }
 
   removeGameFromList(){
-    console.log("remove from list: "+ this.gameDetails.id)
+    this.apiService.getProfile().subscribe(profile => {
+      const currentList = profile.lists.find((list: any) => list.gamesIds.includes(this.gameDetails.id));
+      
+      if (currentList) {
+        currentList.gamesIds = currentList.gamesIds.filter((id: string) => id !== this.gameDetails.id);  
+      
+        this.apiService.updateProfile(profile).subscribe(() => {
+          this.notificationService.showSuccess('Game removed successfully!');
+          window.location.reload();
+        });
+      }else{
+        this.notificationService.showError('Unable to move the game. Please try again.');
+      }
+    });
   }
 }

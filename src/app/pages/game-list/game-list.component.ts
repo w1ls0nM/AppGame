@@ -45,12 +45,4 @@ export class GameListComponent {
       game?.title.toLowerCase().includes(text.toLowerCase()),
     );
   }
-
-  toggleDropdown(gameId: string): void {
-    this.dropdownVisibility[gameId] = !this.dropdownVisibility[gameId];
-  }
-
-  addToMyList(game: Game, category: string): void {
-    console.log("add to list: "+category);
-  }
 }
