@@ -15,6 +15,8 @@ export class HeaderComponent {
 
   profile: Profile | undefined;
 
+  defaultAvatar: string = 'https://icon-library.com/images/guest-icon/guest-icon-5.jpg';
+
   constructor(private profileService: ProfileServiceService, private router: Router) {}
 
   ngOnInit() {

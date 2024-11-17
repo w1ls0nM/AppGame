@@ -8,7 +8,7 @@
     <div class="profile-section">
       <label class="userName">{{ profile?.name || 'Guest' }}</label>
       <button (click)="navigateToUpdateProfile()" class="profile-icon-button">
-        <img [src]="profile?.avatar" alt="Profile Icon" class="profile-icon">
+        <img [src]="profile?.avatar || defaultAvatar" alt="Profile Icon" class="profile-icon">
       </button>
       <button class="logout-button">Logout</button>
     </div>
