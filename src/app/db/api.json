@@ -1,9 +1,44 @@
 {
   "profile": {
-    "name": "Zé Tomates",
+    "id": "06c2",
+    "name": "Zé Povinho",
     "email": "zpovinho@mail.pt",
     "password": "123456",
-    "avatar": "https://th.bing.com/th/id/OIP.R_U9Z7gyIETdmTktmZx3GQHaE6?rs=1&pid=ImgDetMain"
+    "avatar": "https://avatars.steamstatic.com/b32358b1a0f188ff07656a0c265b5af916224e96_full.jpg",
+    "lists": [
+      {
+        "id": "emif",
+        "name": "Play Later",
+        "gamesIds": [
+          "12",
+          "340",
+          "523"
+        ]
+      },
+      {
+        "id": "qepb",
+        "name": "Currently Playing",
+        "gamesIds": [
+          "582",
+          "11"
+        ]
+      },
+      {
+        "id": "9ou3",
+        "name": "Played",
+        "gamesIds": [
+          "511"
+        ]
+      },
+      {
+        "id": "gypq",
+        "name": "Completed",
+        "gamesIds": [
+          "522",
+          "508"
+        ]
+      }
+    ]
   },
   "platforms": [
     {

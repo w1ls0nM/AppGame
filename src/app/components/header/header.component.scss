@@ -129,3 +129,17 @@ h1 {
   font-weight: bold;
   margin-right: 0.5em;
 }
+
+.profile-icon-button {
+  background: none;       /* Remove background */
+  border: none;           /* Remove border */
+  padding: 0;             /* Remove any padding */
+  cursor: pointer;       /* Ensure the cursor is a pointer to indicate it's clickable */
+}
+
+.profile-icon-button .profile-icon {
+  width: 40px;            /* Adjust width and height as needed */
+  height: 40px;
+  border-radius: 50%;     /* Make it round (circle) */
+  object-fit: cover;      /* Ensure the image fits within the circle without distortion */
+}

@@ -6,12 +6,10 @@
     </div>
 
     <div class="profile-section">
-      <a href="/profile">
-        <label class="userName">
-        {{ profile?.name || 'Guest' }}
-      </label>
-      <img [src]="profile?.avatar" alt="Profile Icon" class="profile-icon">
-      </a>
+      <label class="userName">{{ profile?.name || 'Guest' }}</label>
+      <button (click)="navigateToUpdateProfile()" class="profile-icon-button">
+        <img [src]="profile?.avatar || defaultAvatar" alt="Profile Icon" class="profile-icon">
+      </button>
       <button class="logout-button">Logout</button>
     </div>
   </div>
