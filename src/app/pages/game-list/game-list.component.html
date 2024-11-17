@@ -23,21 +23,6 @@
                             <div class="col">
                                 <a href="gameDetails/{{game.id}}" class="btn btn-primary mx-auto">View Details</a>
                             </div>
-                            <div class="dropdown-container col">
-                                <button type="button" class="btn btn-primary" (click)="toggleDropdown(game.id)">
-                                  Add to list
-                                </button>
-                                <div *ngIf="dropdownVisibility[game.id]" class="dropdown-menu">
-                                  <div *ngFor="let category of categories">
-                                    <button
-                                      type="button"
-                                      class="dropdown-item"
-                                      (click)="addToMyList(game, category); toggleDropdown(game.id)">
-                                      {{ category }}
-                                    </button>
-                                  </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

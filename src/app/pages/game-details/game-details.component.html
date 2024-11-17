@@ -35,30 +35,27 @@
                 Add to list
                 </button>
                 <div *ngIf="dropdownVisibilityAdd" class="dropdown-menu">
-                    <div *ngFor="let category of categories">
+                    <div *ngFor="let list of lists">
                         <button
                         type="button"
                         class="dropdown-item"
-                        (click)="addToMyList(category); toggleDropdown('add')">
-                        {{ category }}
+                        (click)="addToMyList(list.id); toggleDropdown('add')">
+                        {{ list.name }}
                         </button>
                     </div>
                 </div>
             </div>
             <div class="dropdown-container col">
-                <button type="button" class="btn btn-primary" (click)="toggleDropdown('move')">
+                <button type="button" class="btn btn-primary" (click)="toggleMoveOptions()">
                 Move to list
                 </button>
-                <div *ngIf="dropdownVisibilityMove" class="dropdown-menu">
-                    <div *ngFor="let category of categories">
-                        <button
-                        type="button"
-                        class="dropdown-item"
-                        (click)="moveGameToList(category); toggleDropdown('move')">
-                        {{ category }}
-                        </button>
-                    </div>
-                </div>
+                <div *ngIf="showMoveOptions[gameDetails.id]" class="mt-2">
+                    <ul class="list-group">
+                      <li *ngFor="let list of getAvailableLists()" class="list-group-item">
+                        <button class="btn btn-link" (click)="moveGameToList(list.id)">{{ list.name }}</button>
+                      </li>
+                    </ul>
+                  </div>
             </div>
             <div class="col">
                 <button type="button" class="btn btn-primary" (click)="removeGameFromList()">Remove from list</button>
