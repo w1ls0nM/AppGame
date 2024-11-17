@@ -1,22 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
-/* Ensure that the body and html take up the full height */
 html, body {
-  height: 100%;         /* Full viewport height */
-  margin: 0;            /* Remove default margin */
-  overflow: hidden;     /* Prevent scrolling */
+  height: 100%;  
+  margin: 0;
 }
 
 body {
   display: flex;
-  flex-direction: column;  /* Stack header, main, and footer vertically */
+  flex-direction: column;
 }
 
-/* Header, Nav, Footer should not overflow */
 app-header, app-nav, app-footer {
-  flex-shrink: 0;         /* Prevent shrinking of header, nav, footer */
+  flex-shrink: 0;
 }
 
 main {
-  flex-grow: 1;           /* Main content should take up remaining space */
-  overflow: auto;         /* Allow scrolling inside main if content exceeds viewport */
+  flex-grow: 1;
+  overflow: auto;
 }
