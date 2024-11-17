@@ -1,5 +1,6 @@
 <div *ngIf="games.length > 0; else noGames">
-  <button onclick="window.history.back()" class="btn btn-primary back-button mt-2">Back</button>
+  <br>
+  <button onclick="window.history.back()" class="btn btn-primary back-button mt-5">Back</button>
   <h2 class="animated-text text-center mb-4">{{currentListName }}</h2>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     <div class="col" *ngFor="let game of games">
