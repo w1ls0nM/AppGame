@@ -53,6 +53,7 @@ export class GameDetailsComponent {
   lists: any[] = [];
   errorMessage: string = '';
   showMoveOptions: { [gameId: string]: boolean } = {};
+  currentList: any;
 
   constructor(
     private apiService: ApiService,
@@ -73,8 +74,12 @@ export class GameDetailsComponent {
 
     this.apiService.getProfile().subscribe(profile => {
       this.lists = profile.lists;
-    });
-  }
+      const listContainingGame = this.lists.find(list => list.gamesIds?.includes(this.gameDetails.id));
+      this.currentList = listContainingGame ? listContainingGame.name : null;    });
+      if(this.currentList == ''){
+        this.currentList = "Not on any list";    
+      }
+    }
 
   toggleDropdown(dropdownType: string): void {
     if (dropdownType === 'add') {

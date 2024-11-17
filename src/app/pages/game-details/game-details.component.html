@@ -16,6 +16,10 @@
                 <p>Genre: {{gameDetails.genre}}</p>
                 <p>Platform: {{gameDetails.platform}}</p>
                 <p>Release date: {{gameDetails.releaseDate}}</p>
+                <p *ngIf="currentList; else placeholder">List: {{ currentList }}</p>
+                    <ng-template #placeholder>
+                        <p>List: No list assigned</p>
+                    </ng-template>
                 <p>Game Status: {{gameDetails.status}}</p>
             </div>
             <div class="col-4">
