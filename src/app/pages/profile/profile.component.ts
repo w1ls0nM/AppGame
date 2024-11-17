@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfileServiceService } from '../../profile-service.service';
 import { Profile } from '../../Models/profile';
+import { NotificationService } from '../../notification.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +21,7 @@ export class ProfileComponent {
     avatar: new FormControl('', Validators.required),
   });
 
-  constructor(private profileService: ProfileServiceService) {}
+  constructor(private profileService: ProfileServiceService, private notificationService: NotificationService) {}
 
   ngOnInit() {
     this.profileService.getProfile().subscribe({
@@ -49,10 +50,11 @@ export class ProfileComponent {
         next: data => {
           console.log('Profile updated successfully');
           console.log('Data: ' + data);
-          window.location.reload();
+          this.notificationService.showSuccess('Profile updated successfully!');
         },
         error: error => {
           console.error('Error updating profile', error);
+          this.notificationService.showError('Failed to update profile. Please try again.');
         }
       });
     }

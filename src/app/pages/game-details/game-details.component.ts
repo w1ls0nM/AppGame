@@ -42,6 +42,10 @@ export class GameDetailsComponent {
   id: string="";
   roulette: Array<any> = [];
 
+  categories = ['Play Later', 'Currently Playing', 'Played', 'Completed'];
+
+  dropdownVisibility!: boolean;
+
   constructor(
     private apiService: ApiService,
     private router: Router
@@ -56,5 +60,13 @@ export class GameDetailsComponent {
         this.roulette = this.gameDetails.screenshots;
       },
     })
+  }
+
+  toggleDropdown(): void {
+    this.dropdownVisibility = !this.dropdownVisibility;
+  }
+
+  addToMyList(category: string): void {
+    console.log("add to list: "+category);
   }
 }
