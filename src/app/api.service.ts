@@ -40,7 +40,7 @@ export class ApiService {
   }
 
   updateProfile(profile: any): Observable<any> {
-    return this.http.put('http://localhost:3000/profile', profile); // Assuming PUT request to update the profile
+    return this.http.put('http://localhost:3000/profile', profile);
   }
   
 }

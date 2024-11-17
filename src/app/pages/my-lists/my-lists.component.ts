@@ -79,15 +79,21 @@ export class MyListsComponent implements OnInit {
       const updatedList = this.lists.find(list => list.id === listId);
       if (updatedList) {
         updatedList.gamesIds.push(this.selectedGame.id);
-        this.apiService.updateProfile({ lists: this.lists }).subscribe(response => {
+
+      this.apiService.getProfile().subscribe(profile => {
+        profile.lists = this.lists;  
+
+        
+        this.apiService.updateProfile(profile).subscribe(response => {
           console.log('Game added successfully:', response);
           this.dropdownVisible = false;
           this.selectedGame = null;
           this.errorMessage = '';
         });
-      }
-    } else {
-      console.error('No game selected');
+      });
     }
+  } else {
+    console.error('No game selected');
+  }
   }
 }

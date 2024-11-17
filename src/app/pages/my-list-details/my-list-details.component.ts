@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../../api.service';
 import { List } from '../../Models/list';
-import { Profile } from '../../Models/profile';  // Assuming Profile is the model for profile data
-
+import { Profile } from '../../Models/profile'; 
 @Component({
   selector: 'app-my-list-details',
   standalone: true,
@@ -52,7 +51,7 @@ export class MyListDetailsComponent implements OnInit {
   }
 
   getAvailableLists(gameId: string): List[] {
-    return this.lists.filter(list => list.gamesIds.indexOf(gameId) === -1 && list.id !== this.listId); // Exclude current list
+    return this.lists.filter(list => list.gamesIds.indexOf(gameId) === -1 && list.id !== this.listId); 
   }
 
 
@@ -61,11 +60,11 @@ export class MyListDetailsComponent implements OnInit {
       const selectedList = profile.lists.find((list: any) => list.id === this.listId);
       
       if (selectedList) {
-        selectedList.gamesIds = selectedList.gamesIds.filter((id: string) => id !== gameId); // Remove the game by its ID
+        selectedList.gamesIds = selectedList.gamesIds.filter((id: string) => id !== gameId); 
         
       
-        this.apiService.updateProfile({ lists: profile.lists }).subscribe(() => {
-          this.loadListDetails();
+        this.apiService.updateProfile(profile).subscribe(() => {
+          this.loadListDetails(); 
         });
       }
     });
@@ -82,7 +81,7 @@ export class MyListDetailsComponent implements OnInit {
       targetList.gamesIds.push(gameId); 
 
   
-      this.apiService.updateProfile({ lists: profile.lists }).subscribe(() => {
+      this.apiService.updateProfile(profile).subscribe(() => {
         this.loadListDetails(); 
       });
     }
