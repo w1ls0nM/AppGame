@@ -1,4 +1,22 @@
-<body>
-    <p>profile works!</p>    
-</body>
-
+<h3>UPDATE PROFILE</h3>
+<form [formGroup]="form" (ngSubmit)="updateProfile()">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" formControlName="name">
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" formControlName="email">
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="text" name="password" id="password" formControlName="password">
+    </div>
+    <div>
+        <label for="avatar">Avatar:</label>
+        <input type="text" name="avatar" id="avatar" formControlName="avatar">
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
