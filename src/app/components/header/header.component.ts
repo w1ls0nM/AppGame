@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Profile } from '../../Models/profile';
 import { NavComponent } from "../nav/nav.component";
 import { ProfileServiceService } from '../../profile-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,10 @@ import { ProfileServiceService } from '../../profile-service.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
   profile: Profile | undefined;
 
-  constructor(private profileService: ProfileServiceService) {}
+  constructor(private profileService: ProfileServiceService, private router: Router) {}
 
   ngOnInit() {
     this.profileService.getProfile().subscribe({
@@ -27,5 +29,8 @@ export class HeaderComponent {
     });
   }
 
-}
+  navigateToUpdateProfile() {
+    this.router.navigate(['profile']);
+  }
 
+}
