@@ -44,7 +44,8 @@ export class GameDetailsComponent {
 
   categories = ['Play Later', 'Currently Playing', 'Played', 'Completed'];
 
-  dropdownVisibility!: boolean;
+  dropdownVisibilityAdd: boolean = false;
+  dropdownVisibilityMove: boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -62,11 +63,25 @@ export class GameDetailsComponent {
     })
   }
 
-  toggleDropdown(): void {
-    this.dropdownVisibility = !this.dropdownVisibility;
+  toggleDropdown(dropdownType: string): void {
+    if (dropdownType === 'add') {
+      this.dropdownVisibilityAdd = !this.dropdownVisibilityAdd;
+      this.dropdownVisibilityMove = false; // Close the other dropdown
+    } else if (dropdownType === 'move') {
+      this.dropdownVisibilityMove = !this.dropdownVisibilityMove;
+      this.dropdownVisibilityAdd = false; // Close the other dropdown
+    }
   }
 
   addToMyList(category: string): void {
-    console.log("add to list: "+category);
+    console.log("add "+this.gameDetails.id+" to list: "+category);
+  }
+
+  moveGameToList(category: string): void{
+    console.log("move "+this.gameDetails.id+" to list: "+category);
+  }
+
+  removeGameFromList(){
+    console.log("remove from list: "+ this.gameDetails.id)
   }
 }
