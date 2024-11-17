@@ -41,10 +41,14 @@ export class ProfileComponent {
 
   updateProfile() {
     if (this.form.valid) {
-      const updatedProfile: Profile = this.form.getRawValue();
+      const updatedProfile: Profile = {
+        ...this.profile,
+        ...this.form.getRawValue()
+      };
       this.profileService.updateProfile(updatedProfile).subscribe({
         next: data => {
           console.log('Profile updated successfully');
+          console.log('Data: ' + data);
           window.location.reload();
         },
         error: error => {
